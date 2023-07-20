@@ -73,7 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           TextSpan(
                             text: termAndCondition,
                             style: TextStyle(
-                              fontFamily: semibold,
+                              fontFamily: semiBold,
                               color: redColor,
                             ),
                           ),
@@ -87,7 +87,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           TextSpan(
                             text: privacyPolicy,
                             style: TextStyle(
-                              fontFamily: semibold,
+                              fontFamily: semiBold,
                               color: redColor,
                             ),
                           ),
@@ -134,7 +134,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     alreadyHaveAccount.text.color(fontGrey).make(),
                     login.text
                         .color(redColor)
-                        .fontFamily(semibold)
+                        .fontFamily(semiBold)
                         .make()
                         .onTap(() {
                       Get.back();

@@ -8,7 +8,7 @@ Widget customTextFormField(
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      title!.text.color(redColor).fontFamily(semibold).size(16).make(),
+      title!.text.color(redColor).fontFamily(semiBold).size(16).make(),
       5.heightBox,
       TextFormField(
         obscureText: boolObsecure ?? false,
@@ -17,7 +17,7 @@ Widget customTextFormField(
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(16),
           hintStyle: const TextStyle(
-            fontFamily: semibold,
+            fontFamily: semiBold,
             color: textfieldGrey,
           ),
           hintText: hint,

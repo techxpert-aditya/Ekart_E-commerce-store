@@ -24,3 +24,13 @@ const home = "Home";
 const catagories = "Catagories";
 const cart = "Cart";
 const account = "Account";
+
+// home screen strings
+
+const searchAnything = "Search anything . . .";
+const todaysDeal = "Todays Deal";
+const flashSale = "Flash Sale";
+const topCatagories = "Top Catagories";
+const brands = "Brands";
+const topSellers = "Top Sellers";
+const featuredCatagories = "Featured Catagories";
