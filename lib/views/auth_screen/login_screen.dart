@@ -1,7 +1,6 @@
 import 'package:emart/consts/consts.dart';
 import 'package:emart/views/auth_screen/signup_screen.dart';
 import 'package:emart/views/home_screen/home.dart';
-import 'package:get/get.dart';
 
 import '../../widgets_common/appLogo_widget.dart';
 import '../../widgets_common/bg_widget.dart';

@@ -4,8 +4,6 @@ import '../../widgets_common/bg_widget.dart';
 import '../../widgets_common/custom_elevated_button.dart';
 import '../../widgets_common/custom_text_form_field.dart';
 
-import 'package:get/get.dart';
-
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 

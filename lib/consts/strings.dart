@@ -42,3 +42,15 @@ const tShirts = "T-Shirts";
 const girlsDress = "Girls Dress";
 const featuredProduct = "Featured Products";
 const allProducts = "All Products";
+
+// catagories screen strings
+
+const womenClothing = "Women Clothing";
+const menClothingFashion = "Men Clothing & Fashion";
+const compAccess = "Computer & Accessories";
+const automobile = "Automobile";
+const kidstoys = "Kids & Toys";
+const sports = "Sports";
+const jewelery = "Jewelery";
+const cellphone = "Cellphone & Tab";
+const furniture = "Furniture";

@@ -1,6 +1,5 @@
 import 'package:emart/consts/consts.dart';
 import 'package:emart/controllers/home_controller.dart';
-import 'package:get/get.dart';
 
 import '../cart_screen/cart_screen.dart';
 import '../catagories_screen/catagories_screen.dart';

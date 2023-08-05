@@ -1,7 +1,5 @@
 import 'package:emart/consts/consts.dart';
 import 'package:emart/widgets_common/appLogo_widget.dart';
-import 'package:get/get.dart';
-
 import '../auth_screen/login_screen.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';

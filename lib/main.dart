@@ -1,7 +1,6 @@
 import 'package:emart/views/spash_screen/spash_screen.dart';
 import 'package:flutter/services.dart';
 import 'consts/consts.dart';
-import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
