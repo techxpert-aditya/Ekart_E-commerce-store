@@ -49,3 +49,17 @@ const catagoryImages = [
   imgFc8,
   imgFc9
 ];
+
+const itemColorsList = [
+  Colors.red,
+  Colors.blue,
+  Colors.green,
+];
+
+const itemDetailScreenButtonList = [
+  video,
+  reviews,
+  sellerPolicy,
+  returnPolicy,
+  supportPolicy,
+];

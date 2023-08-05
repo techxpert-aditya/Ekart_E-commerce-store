@@ -54,3 +54,21 @@ const sports = "Sports";
 const jewelery = "Jewelery";
 const cellphone = "Cellphone & Tab";
 const furniture = "Furniture";
+
+// item detail screen strings
+
+const seller = "Seller";
+const inHouseProduct = "In House Product";
+const color = "Color :";
+const quantity = "Quantity :";
+const available = "Available";
+const totalPrice = "Total Price :";
+const description = "Description";
+const video = "Video";
+const reviews = "Reviews";
+const sellerPolicy = "Seller Policy";
+const returnPolicy = "Return Policy";
+const supportPolicy = "Support Policy";
+const productsYouMayAlsoLike = "Products you may also like";
+const addToCart = "Add to Cart";
+const buyNow = "Buy Now";

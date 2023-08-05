@@ -81,7 +81,7 @@ class CatagoryDetail extends StatelessWidget {
                       .outerShadow
                       .make()
                       .onTap(() {
-                    Get.to(() => const ItemDetail(
+                    Get.to(() => ItemDetail(
                           title: "Dummy Title",
                         ));
                   });
