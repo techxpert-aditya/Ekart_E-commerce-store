@@ -62,7 +62,7 @@ class CatagoryDetail extends StatelessWidget {
                       const Spacer(),
                       "the all new sereis of laptop with high graphics and performance are here and are on discount"
                           .text
-                          .size(16)
+                          .size(context.height * 0.015)
                           .color(fontGrey)
                           .make(),
                       10.heightBox,

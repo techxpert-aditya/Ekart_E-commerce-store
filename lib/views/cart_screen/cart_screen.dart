@@ -5,8 +5,15 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey,
+    return Scaffold(
+      body: "Cart is Empty"
+          .text
+          .fontFamily(semiBold)
+          .size(20)
+          .makeCentered()
+          .box
+          .color(whiteColor)
+          .make(),
     );
   }
 }

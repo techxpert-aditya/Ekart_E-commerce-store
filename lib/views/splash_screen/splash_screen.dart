@@ -4,11 +4,11 @@ import '../auth_screen/login_screen.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
 
-class SpashScreen extends StatefulWidget {
-  const SpashScreen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<SpashScreen> createState() => _SpashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
 // creating a fuction to change screen
@@ -24,7 +24,7 @@ changeScreen() {
   });
 }
 
-class _SpashScreenState extends State<SpashScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();

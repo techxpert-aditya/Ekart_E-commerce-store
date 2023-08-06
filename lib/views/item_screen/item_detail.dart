@@ -314,31 +314,53 @@ class ItemDetail extends StatelessWidget {
 
                   // buttons section
                   10.heightBox,
-                  ListView(
+                  ListView.separated(
+                    separatorBuilder: (context, index) => const Divider(
+                      color: lightGrey,
+                      height: 0.5,
+                    ),
+                    itemCount: itemDetailScreenButtonList.length,
+                    itemBuilder: (context, index) => ListTile(
+                      title: itemDetailScreenButtonList[index]
+                          .text
+                          .fontFamily(semiBold)
+                          .color(darkFontGrey)
+                          .make(),
+                      trailing: const Icon(
+                        Icons.arrow_forward_rounded,
+                        color: fontGrey,
+                        size: 16,
+                      ),
+                    ),
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    children: List.generate(
-                      itemDetailScreenButtonList.length,
-                      (index) => ListTile(
-                        title: itemDetailScreenButtonList[index]
-                            .text
-                            .fontFamily(semiBold)
-                            .color(darkFontGrey)
-                            .make(),
-                        trailing: const Icon(
-                          Icons.arrow_forward_rounded,
-                          color: fontGrey,
-                          size: 16,
-                        ),
-                      )
-                          .box
-                          .margin(const EdgeInsets.all(8))
-                          .roundedSM
-                          .outerShadow
-                          .color(whiteColor)
-                          .make(),
-                    ),
-                  ),
+                    // item List.generate(
+                    //   itemDetailScreenButtonList.length,
+                    //   (index) => ListTile(
+                    //     title: itemDetailScreenButtonList[index]
+                    //         .text
+                    //         .fontFamily(semiBold)
+                    //         .color(darkFontGrey)
+                    //         .make(),
+                    //     trailing: const Icon(
+                    //       Icons.arrow_forward_rounded,
+                    //       color: fontGrey,
+                    //       size: 16,
+                    //     ),
+                    //   ),
+                    // .box
+                    // .margin(const EdgeInsets.all(8))
+                    // .roundedSM
+                    // .outerShadow
+                    // .color(whiteColor)
+                    // .make(),
+                  )
+                      .box
+                      .color(whiteColor)
+                      .margin(const EdgeInsets.all(16))
+                      .rounded
+                      .outerShadowLg
+                      .make(),
 
                   // products you may like section
                   10.heightBox,

@@ -72,3 +72,12 @@ const supportPolicy = "Support Policy";
 const productsYouMayAlsoLike = "Products you may also like";
 const addToCart = "Add to Cart";
 const buyNow = "Buy Now";
+
+// account screen strings
+const logOut = "Log Out";
+const inYourCart = "In your Cart";
+const inYourWishList = "In your WishList";
+const yourOrder = "Your Orders";
+const myWishList = "My WishList";
+const myOrders = "My Orders";
+const messages = "Messages";

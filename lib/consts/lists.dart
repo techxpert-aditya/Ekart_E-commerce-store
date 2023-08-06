@@ -63,3 +63,15 @@ const itemDetailScreenButtonList = [
   returnPolicy,
   supportPolicy,
 ];
+
+const profileScreenButtonList = [
+  myWishList,
+  myOrders,
+  messages,
+];
+
+const profileScreenButtonIcons = [
+  icHeart,
+  icOrder,
+  icMessages,
+];

@@ -1,4 +1,4 @@
-import 'package:emart/views/spash_screen/spash_screen.dart';
+import 'package:emart/views/splash_screen/splash_screen.dart';
 import 'package:flutter/services.dart';
 import 'consts/consts.dart';
 
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         ),
         fontFamily: regular,
       ),
-      home: const SpashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

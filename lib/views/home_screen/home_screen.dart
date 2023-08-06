@@ -179,8 +179,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     color: redColor,
-                    height: context.screenHeight * 0.3,
-                    width: context.screenWidth,
+                    // height: context.screenHeight * 0.3,
+                    // width: context.screenWidth,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -298,7 +298,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           const Spacer(),
                           "the all new sereis of laptop with high graphics and performance are here and are on discount"
                               .text
-                              .size(16)
+                              .size(context.height * 0.015)
                               .color(fontGrey)
                               .make(),
                           10.heightBox,
