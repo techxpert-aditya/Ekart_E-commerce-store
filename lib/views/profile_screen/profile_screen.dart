@@ -1,6 +1,8 @@
 import 'package:emart/consts/consts.dart';
+import 'package:emart/controllers/auth_controller.dart';
 import 'package:emart/widgets_common/bg_widget.dart';
 
+import '../auth_screen/login_screen.dart';
 import 'components/profile_screen_item_count_card.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -69,7 +71,13 @@ class ProfileScreen extends StatelessWidget {
                         width: 1,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () async {
+                      Get.put(AuthController().signOutMethod(context: context))
+                          .then((value) {
+                        VxToast.show(context, msg: logInSuccessfull);
+                      });
+                      Get.offAll(const LoginScreen());
+                    },
                     child: logOut.text.white.make(),
                   ),
                 ],
