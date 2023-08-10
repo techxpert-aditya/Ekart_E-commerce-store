@@ -1,4 +1,5 @@
 import 'package:emart/consts/consts.dart';
+import 'package:emart/views/home_screen/home.dart';
 import 'package:emart/widgets_common/appLogo_widget.dart';
 import '../auth_screen/login_screen.dart';
 // import 'package:flutter/src/widgets/framework.dart';
@@ -20,7 +21,16 @@ changeScreen() {
     // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
 
     // using getX
-    Get.to(() => const LoginScreen());
+    // Get.to(() => const LoginScreen());
+
+    // checking  if the  user is signed in or not
+    auth.authStateChanges().listen((User? user) {
+      if (user == null) {
+        Get.to(() => const LoginScreen());
+      } else {
+        Get.to(() => Home());
+      }
+    });
   });
 }
 
