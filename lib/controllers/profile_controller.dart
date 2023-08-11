@@ -8,7 +8,8 @@ class ProfileController extends GetxController {
   TextEditingController firstNameController = TextEditingController();
   TextEditingController middleNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController oldPasswordController = TextEditingController();
+  TextEditingController newPasswordController = TextEditingController();
 
   // image picker
   var profileImagePath = ''.obs;
@@ -45,7 +46,7 @@ class ProfileController extends GetxController {
       {firstName,
       middleName,
       lastName,
-      password,
+      newPassword,
       profileImageUrl,
       context}) async {
     isLoading(true);
@@ -56,7 +57,7 @@ class ProfileController extends GetxController {
             'firstName': firstName,
             'middleName': middleName,
             'lastName': lastName,
-            'password': password,
+            'password': newPassword,
             'imgUrl': profileImageUrl,
           },
           SetOptions(
@@ -64,6 +65,24 @@ class ProfileController extends GetxController {
           ));
     } catch (e) {
       VxToast.show(context, msg: e.toString());
+    } finally {
+      isLoading(false);
+    }
+  }
+
+  // update password
+  updatePassword({email, oldPassword, newPassword, context}) async {
+    isLoading(true);
+    final cred =
+        EmailAuthProvider.credential(email: email, password: oldPassword);
+    try {
+      await currentUser!.reauthenticateWithCredential(cred).then((value) {
+        // print(value.user!.email);
+        currentUser!.updatePassword(newPassword);
+      });
+    } catch (e) {
+      VxToast.show(context, msg: e.toString());
+      // print(e.toString());
     } finally {
       isLoading(false);
     }

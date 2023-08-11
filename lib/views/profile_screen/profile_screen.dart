@@ -4,7 +4,6 @@ import 'package:emart/controllers/profile_controller.dart';
 import 'package:emart/widgets_common/bg_widget.dart';
 
 import '../../services/firestore_service.dart';
-import '../auth_screen/login_screen.dart';
 import 'components/profile_screen_item_count_card.dart';
 import 'edit_profile_screen.dart';
 
@@ -28,6 +27,8 @@ class ProfileScreen extends StatelessWidget {
             } else {
               // obtaining the data from the firestore snapshot
               var data = snapshot.data!.docs[0];
+              // print(data['firstName']);
+              profileController.profileImageUrl = data['imgUrl'];
 
               return SafeArea(
                 child: Container(
@@ -43,8 +44,6 @@ class ProfileScreen extends StatelessWidget {
                                 data['middleName'];
                             profileController.lastNameController.text =
                                 data['lastName'];
-                            profileController.passwordController.text =
-                                data['password'];
 
                             Get.to(() => EditProfileScreen(
                                   data: data,
@@ -68,6 +67,9 @@ class ProfileScreen extends StatelessWidget {
                                   .roundedFull
                                   .width(70)
                                   .clip(Clip.antiAlias)
+                                  .make()
+                                  .box
+                                  .roundedFull
                                   .border(
                                     color: whiteColor,
                                     style: BorderStyle.solid,
@@ -83,6 +85,9 @@ class ProfileScreen extends StatelessWidget {
                                   .roundedFull
                                   .width(70)
                                   .clip(Clip.antiAlias)
+                                  .make()
+                                  .box
+                                  .roundedFull
                                   .border(
                                     color: whiteColor,
                                     style: BorderStyle.solid,
@@ -117,7 +122,7 @@ class ProfileScreen extends StatelessWidget {
                                   .then((value) {
                                 VxToast.show(context, msg: logInSuccessfull);
                               });
-                              Get.offAll(const LoginScreen());
+                              // Get.offAll(const LoginScreen());
                             },
                             child: logOut.text.white.make(),
                           ),

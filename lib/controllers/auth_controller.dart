@@ -1,4 +1,6 @@
 import 'package:emart/consts/consts.dart';
+import 'package:emart/controllers/profile_controller.dart';
+import 'package:emart/views/auth_screen/login_screen.dart';
 
 class AuthController extends GetxController {
   var isLogInLoading = false.obs;
@@ -57,6 +59,8 @@ class AuthController extends GetxController {
   Future<void> signOutMethod({context}) async {
     try {
       await auth.signOut();
+      Get.find<ProfileController>().onDelete();
+      Get.offAll(() => const LoginScreen());
     } catch (e) {
       VxToast.show(context, msg: e.toString());
     }
