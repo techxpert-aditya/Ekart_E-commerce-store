@@ -25,12 +25,16 @@ Widget customTextFormField({
                   onPressed: () {
                     onTap!();
                   },
-                  icon: Icon(osecurePassword
-                      ? Icons.visibility_off
-                      : Icons.visibility),
-                )
+                  icon: osecurePassword
+                      ? const Icon(
+                          Icons.visibility_off,
+                          color: fontGrey,
+                        )
+                      : const Icon(
+                          Icons.visibility,
+                          color: redColor,
+                        ))
               : null,
-          suffixIconColor: fontGrey,
           contentPadding: const EdgeInsets.all(16),
           hintStyle: const TextStyle(
             fontFamily: semiBold,

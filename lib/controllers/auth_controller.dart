@@ -31,19 +31,25 @@ class AuthController extends GetxController {
     } catch (e) {
       VxToast.show(context, msg: e.toString());
     }
+    currentUser = auth.currentUser;
     return userCredential;
   }
 
   // storing data in cloud firestore method
-  storeUserData({name, password, email}) async {
+  storeUserData({firstName, middleName, lastName, password, email}) async {
     DocumentReference<Map<String, dynamic>> store =
         firestore.collection(userCollection).doc(currentUser!.uid);
     store.set({
-      'name': name,
+      'firstName': firstName,
+      'middleName': middleName,
+      'lastName': lastName,
       'password': password,
       'email': email,
       'imgUrl': '',
-      'id': currentUser!.uid
+      'id': currentUser!.uid,
+      'cartCount': "00",
+      'orderCount': "00",
+      'wishlistCount': "00",
     });
   }
 

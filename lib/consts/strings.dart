@@ -12,8 +12,12 @@ const login = "Log in";
 const signup = "Sign Up";
 const createNewAccount = "or, create a new account";
 const loginWith = " Log in with ";
-const name = "Name";
-const nameHint = "john doe";
+const firstName = "First Name";
+const firstNameHint = "John";
+const middleName = "Middle Name";
+const middleNameHint = "William";
+const lastName = "Last Name";
+const lastNameHint = "Doe";
 const registerWithPhone = "or Register with a Phone Number";
 const privacyPolicy = "Privacy Policy";
 const termAndCondition = "Terms and Conditions";
@@ -30,6 +34,7 @@ const account = "Account";
 
 // home screen strings
 
+const welcome = "Welcome, ";
 const searchAnything = "Search anything . . .";
 const todaysDeal = "Todays Deal";
 const flashSale = "Flash Sale";
@@ -84,3 +89,8 @@ const yourOrder = "Your Orders";
 const myWishList = "My WishList";
 const myOrders = "My Orders";
 const messages = "Messages";
+
+// profile edit screen strings
+const change = "Change";
+const save = "Save";
+const profileUpdated = "Profile Updated";

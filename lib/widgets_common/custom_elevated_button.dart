@@ -4,9 +4,10 @@ Widget customElevatedButton(
     {required String? label,
     required Function()? onPress,
     Color? color,
-    Color? textColor}) {
+    Color? textColor,
+    bool isUsedInRow = false}) {
   return SizedBox(
-    width: double.maxFinite,
+    width: isUsedInRow ? null : double.maxFinite,
     child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           elevation: 0,
