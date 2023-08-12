@@ -42,11 +42,11 @@ class Home extends StatelessWidget {
         label: account),
   ];
 
-  final List<Widget> navBody = const [
-    HomeScreen(),
-    CatagoriesScreen(),
-    CartScreen(),
-    ProfileScreen(),
+  final List<Widget> navBody = [
+    const HomeScreen(),
+    const CatagoriesScreen(),
+    const CartScreen(),
+    const ProfileScreen(),
   ];
 
   @override

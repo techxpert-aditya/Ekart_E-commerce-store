@@ -1,6 +1,7 @@
 import 'package:emart/consts/consts.dart';
 import 'package:emart/widgets_common/bg_widget.dart';
 
+import '../../controllers/product_controller.dart';
 import '../item_screen/item_detail.dart';
 
 class CatagoryDetail extends StatelessWidget {
@@ -9,6 +10,7 @@ class CatagoryDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.find<ProductController>();
     return background(
         child: Scaffold(
       appBar: AppBar(
@@ -24,11 +26,13 @@ class CatagoryDetail extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               child: Row(
                 children: List.generate(
-                    6,
-                    (index) => "baby powder"
+                    controller.subCatagories.length,
+                    (index) => controller.subCatagories[index]
+                        .toString()
                         .text
                         .fontFamily(semiBold)
                         .color(fontGrey)
+                        .align(TextAlign.center)
                         .makeCentered()
                         .box
                         .white

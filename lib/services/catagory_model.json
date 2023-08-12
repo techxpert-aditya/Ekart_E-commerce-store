@@ -1,0 +1,113 @@
+{
+    "catagories": [
+        {
+            "name": "Women Clothing",
+            "subCatagory" : [
+                "Wedding & Events",
+                "Casual Dresses",
+                "Blouses & Shirts",
+                "Hoodies & Sweatshirts",
+                "Sweaters",
+                "Jackets & Coats",
+                "Bottoms"
+            ]
+        },
+
+        {
+            "name": "Men Clothing & Fashion",
+            "subCatagory": [
+                "Hoodies & Sweatshirts",
+                "Tops & Tees",
+                "Jackets & Coats",
+                "Pants",
+                "Shirts",
+                "Jeans"
+            ]
+        },
+        {
+            "name": "Computer & Accessories",
+            "subCatagory": [
+                "Laptops",
+                "Desktops",
+                "Monitors",
+                "Hard Drives & Storage",
+                "Computer Components",
+                "Networking",
+                "Printers"
+            ]
+        },
+        {
+            "name": "Automobile",
+            "subCatagory": [
+                "Car Electronics",
+                "Car Lights",
+                "Car Repair Tools",
+                "Interior Accessories",
+                "Exterior Accessories",
+                "Motorcycle Accessories",
+                "Car Wash & Maintenance"
+            ]
+        },
+        {
+            "name": "Kids & Toys",
+            "subCatagory" : [
+                "school bags",
+                "toys",
+                "baby care",
+                "baby clothing",
+                "baby shoes",
+                "baby toys",
+                "baby feeding",
+                "baby safety"
+            ]
+        },
+        {
+            "name": "Sports",
+            "subCatagory": [
+                "Sports Clothing",
+                "Sports Shoes",
+                "Sports Bags",
+                "Sports Accessories",
+                "Camping & Hiking",
+                "Swimming",
+                "Fishing"
+            ]
+        },
+        {
+            "name": "Jewelery",
+            "subCatagory": [
+                "Fine Jewelery",
+                "Necklaces & Pendants",
+                "Earrings",
+                "Rings",
+                "Bracelets & Bangles",
+                "Jewelry Sets & More",
+                "Beads & Jewelry Making"
+            ]
+        },
+        {
+            "name": "Cellphone & Tab",
+            "subCatagory": [
+                "Cellphones",
+                "iPhones",
+                "Feature Phones",
+                "Refurbished Phones",
+                "Mobile Phone Accessories",
+                "Mobile Phone Parts",
+                "Phone Bags & Cases"
+            ]
+        },
+        {
+            "name": "Furniture",
+            "subCatagory": [
+                "Sofas & Chairs",
+                "Office Furniture",
+                "Beds",
+                "Dining Room Furniture",
+                "Living Room Furniture",
+                "Home Furniture",
+                "Kid's Furniture"
+            ]
+        }
+    ]
+}
