@@ -26,7 +26,7 @@ changeScreen() {
     // checking  if the  user is signed in or not
     auth.authStateChanges().listen((User? user) {
       if (user != null) {
-        Get.to(() => Home());
+        Get.offAll(() => Home());
       } else {
         Get.to(() => const LoginScreen());
       }

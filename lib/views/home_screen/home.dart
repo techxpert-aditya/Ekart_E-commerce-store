@@ -1,6 +1,7 @@
 import 'package:emart/consts/consts.dart';
 import 'package:emart/controllers/home_controller.dart';
 
+import '../../widgets_common/exit_dialogue.dart';
 import '../cart_screen/cart_screen.dart';
 import '../catagories_screen/catagories_screen.dart';
 import '../profile_screen/profile_screen.dart';
@@ -51,32 +52,39 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // backgroundColor: Colors.amber,
-      body: Column(
-        children: [
-          Expanded(
-            child: Obx(
-              () => navBody.elementAt(controller.currentNavIndex.value),
+    return WillPopScope(
+      onWillPop: () async {
+        showDialog(
+            context: context, builder: (context) => exitDialogue(context));
+        return false;
+      },
+      child: Scaffold(
+        // backgroundColor: Colors.amber,
+        body: Column(
+          children: [
+            Expanded(
+              child: Obx(
+                () => navBody.elementAt(controller.currentNavIndex.value),
+              ),
             ),
+          ],
+        ),
+        bottomNavigationBar: Obx(
+          () => BottomNavigationBar(
+            currentIndex: controller.currentNavIndex.value,
+            backgroundColor: whiteColor,
+            type: BottomNavigationBarType.fixed,
+            showSelectedLabels: true,
+            showUnselectedLabels: false,
+            selectedItemColor: redColor,
+            selectedLabelStyle: const TextStyle(
+              fontFamily: semiBold,
+            ),
+            items: navBarItems,
+            onTap: (value) {
+              controller.currentNavIndex.value = value;
+            },
           ),
-        ],
-      ),
-      bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
-          currentIndex: controller.currentNavIndex.value,
-          backgroundColor: whiteColor,
-          type: BottomNavigationBarType.fixed,
-          showSelectedLabels: true,
-          showUnselectedLabels: false,
-          selectedItemColor: redColor,
-          selectedLabelStyle: const TextStyle(
-            fontFamily: semiBold,
-          ),
-          items: navBarItems,
-          onTap: (value) {
-            controller.currentNavIndex.value = value;
-          },
         ),
       ),
     );
