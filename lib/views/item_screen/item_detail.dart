@@ -5,14 +5,15 @@ import 'package:intl/intl.dart';
 
 class ItemDetail extends StatelessWidget {
   final String? title;
-  ItemDetail({super.key, required this.title});
+  final dynamic data;
+  ItemDetail({super.key, required this.title, required this.data});
   final ItemDetailsController controller = Get.put(ItemDetailsController());
 
-  final int priceValue = 30000;
   final currencyFormatter = NumberFormat('#,##,###', 'en_IN');
 
   @override
   Widget build(BuildContext context) {
+    final int priceValue = int.parse(data['p_price']);
     return Scaffold(
       backgroundColor: whiteColor,
       appBar: AppBar(
@@ -45,14 +46,14 @@ class ItemDetail extends StatelessWidget {
                 children: [
                   // the images
                   VxSwiper.builder(
-                    itemCount: 3,
+                    itemCount: data['p_images'].length,
                     aspectRatio: 16 / 9,
-                    // autoPlay: true,
+                    autoPlay: true,
                     height: context.height * 0.35,
-                    // enlargeCenterPage: true,
+                    enlargeCenterPage: true,
                     itemBuilder: (context, index) {
-                      return Image.asset(
-                        imgFc5,
+                      return Image.network(
+                        data['p_images'][index],
                         width: double.infinity,
                         fit: BoxFit.cover,
                       );
@@ -73,12 +74,14 @@ class ItemDetail extends StatelessWidget {
 
                   // rating
                   VxRating(
+                    isSelectable: false,
+                    value: double.parse(data['p_rating']),
                     onRatingUpdate: (value) {},
                     size: 20,
                     normalColor: textfieldGrey,
                     selectionColor: golden,
-                    // maxRating: 5,
-                    stepInt: true,
+                    maxRating: 5,
+                    // stepInt: true,
                     count: 5,
                   ).box.margin(const EdgeInsets.only(left: 12)).make(),
 
@@ -118,7 +121,8 @@ class ItemDetail extends StatelessWidget {
                         children: [
                           seller.text.color(fontGrey).make(),
                           5.heightBox,
-                          inHouseProduct.text
+                          "${data['p_seller']}"
+                              .text
                               .color(fontGrey)
                               .fontFamily(semiBold)
                               .make(),
@@ -156,13 +160,14 @@ class ItemDetail extends StatelessWidget {
                             Obx(
                               () => Row(
                                 children: List.generate(
-                                  itemColorsList.length,
+                                  data['p_colors'].length,
                                   (index) => index ==
                                           controller.currentSelectedColor.value
                                       ? VxBox()
                                           .size(40, 40)
                                           .roundedFull
-                                          .color(itemColorsList[index])
+                                          .color(Color(int.parse(
+                                              data['p_colors'][index])))
                                           .margin(const EdgeInsets.symmetric(
                                               horizontal: 8))
                                           .shadow
@@ -174,9 +179,11 @@ class ItemDetail extends StatelessWidget {
                                       : VxBox()
                                           .size(40, 40)
                                           .roundedFull
-                                          .color(itemColorsList[index])
+                                          .color(Color(int.parse(
+                                              data['p_colors'][index])))
                                           .margin(const EdgeInsets.symmetric(
                                               horizontal: 8))
+                                          .outerShadow
                                           .make()
                                           .onTap(() {
                                           controller.currentSelectedColor
@@ -304,7 +311,7 @@ class ItemDetail extends StatelessWidget {
                       .margin(const EdgeInsets.only(left: 16))
                       .make(),
                   10.heightBox,
-                  "This is a dummy item and dummy description here ... so i can not write more about this item, but i want to write more about this item as i also want to test that the text is overflowing or not from the screen as i havent provided any facility to scroll the text."
+                  "${data['p_description']}"
                       .text
                       .color(fontGrey)
                       .make()

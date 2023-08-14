@@ -1,4 +1,5 @@
 import 'package:emart/consts/consts.dart';
+import 'package:emart/services/firestore_service.dart';
 import 'package:emart/widgets_common/bg_widget.dart';
 
 import '../../controllers/product_controller.dart';
@@ -17,83 +18,120 @@ class CatagoryDetail extends StatelessWidget {
         title: title.text.make(),
         elevation: 0,
       ),
-      body: Container(
-        padding: const EdgeInsets.only(left: 12, right: 12, top: 12),
-        child: Column(
-          children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              child: Row(
-                children: List.generate(
-                    controller.subCatagories.length,
-                    (index) => controller.subCatagories[index]
-                        .toString()
-                        .text
-                        .fontFamily(semiBold)
-                        .color(fontGrey)
-                        .align(TextAlign.center)
-                        .makeCentered()
-                        .box
-                        .white
-                        .size(120, 50)
-                        .margin(const EdgeInsets.only(right: 8))
-                        .roundedSM
-                        .make()),
+      body: StreamBuilder(
+        stream: FireStoreService.getProducts(title),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(Colors.red),
               ),
-            ),
-            30.heightBox,
-            Expanded(
-              child: GridView.builder(
-                itemCount: 6,
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisSpacing: 12,
-                    crossAxisSpacing: 8,
-                    mainAxisExtent: 300,
-                    crossAxisCount: 2),
-                itemBuilder: (context, index) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        imgP3,
-                        width: double.maxFinite,
-                        fit: BoxFit.fill,
-                      ),
-                      const Spacer(),
-                      "the all new sereis of laptop with high graphics and performance are here and are on discount"
-                          .text
-                          .size(context.height * 0.015)
-                          .color(fontGrey)
-                          .make(),
-                      10.heightBox,
-                      "\$12,000"
-                          .text
-                          .size(20)
-                          .color(redColor)
-                          .fontFamily(bold)
-                          .make(),
-                    ],
-                  )
-                      .box
-                      .padding(const EdgeInsets.all(8))
-                      .color(whiteColor)
-                      .roundedSM
-                      .outerShadow
-                      .make()
-                      .onTap(() {
-                    Get.to(() => ItemDetail(
-                          title: "Dummy Title",
-                        ));
-                  });
-                },
-              ).box.make(),
-            ),
-          ],
-        ),
+            );
+          } else if (snapshot.data!.docs.isEmpty) {
+            return Center(
+              child: "No Products Found"
+                  .text
+                  .color(darkFontGrey)
+                  .size(20)
+                  .fontFamily(semiBold)
+                  .make(),
+            );
+          } else {
+            var data = snapshot.data!.docs;
+            return Container(
+              padding: const EdgeInsets.only(left: 12, right: 12, top: 12),
+              child: Column(
+                children: [
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(),
+                    child: Row(
+                      children: List.generate(
+                          controller.subCatagories.length,
+                          (index) => controller.subCatagories[index]
+                              .toString()
+                              .text
+                              .fontFamily(semiBold)
+                              .color(fontGrey)
+                              .align(TextAlign.center)
+                              .makeCentered()
+                              .box
+                              .white
+                              .size(120, 50)
+                              .margin(const EdgeInsets.only(right: 8))
+                              .padding(const EdgeInsets.all(8))
+                              .roundedSM
+                              .make()),
+                    ),
+                  ),
+                  30.heightBox,
+                  Expanded(
+                    child: GridView.builder(
+                      itemCount: data.length,
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              mainAxisSpacing: 12,
+                              crossAxisSpacing: 8,
+                              mainAxisExtent: 300,
+                              crossAxisCount: 2),
+                      itemBuilder: (context, index) {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.network(
+                              data[index]['p_images'][0],
+                              width: double.maxFinite,
+                              fit: BoxFit.cover,
+                            ).box.height(175).make(),
+                            10.heightBox,
+                            "${data[index]['p_name']}"
+                                .text
+                                .size(24)
+                                .color(darkFontGrey)
+                                .fontFamily(semiBold)
+                                .make(),
+                            const Spacer(),
+                            // 10.heightBox,
+                            "${data[index]['p_description']}"
+                                .text
+                                .maxLines(3)
+                                .ellipsis
+                                .size(context.height * 0.015)
+                                .color(fontGrey)
+                                .make(),
+                            10.heightBox,
+                            "${data[index]['p_price']}"
+                                .numCurrency
+                                .text
+                                .size(20)
+                                .color(redColor)
+                                .fontFamily(bold)
+                                .make(),
+                          ],
+                        )
+                            .box
+                            .padding(const EdgeInsets.all(8))
+                            .color(whiteColor)
+                            .roundedSM
+                            .outerShadow
+                            .make()
+                            .onTap(() {
+                          Get.to(() => ItemDetail(
+                                title: "${data[index]['p_name']}",
+                                data: data[index],
+                              ));
+                        });
+                      },
+                    ).box.make(),
+                  ),
+                ],
+              ),
+            );
+          }
+        },
       ),
     ));
   }

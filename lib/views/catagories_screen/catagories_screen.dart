@@ -12,8 +12,10 @@ class CatagoriesScreen extends StatelessWidget {
     return background(
       child: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
+          automaticallyImplyLeading: false,
           elevation: 0,
-          title: catagories.text.fontFamily(bold).white.make(),
+          title: catagories.text.fontFamily(bold).size(24).white.make(),
         ),
         body: Container(
           padding: const EdgeInsets.only(top: 12, right: 12, left: 12),

@@ -100,11 +100,11 @@
         {
             "name": "Furniture",
             "subCatagory": [
+                "Living Room Furniture",
                 "Sofas & Chairs",
                 "Office Furniture",
                 "Beds",
                 "Dining Room Furniture",
-                "Living Room Furniture",
                 "Home Furniture",
                 "Kid's Furniture"
             ]

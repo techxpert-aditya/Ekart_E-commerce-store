@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
     return background(
       child: Scaffold(
         body: StreamBuilder(
-          stream: FirebaseService.getUser(currentUser!.uid),
+          stream: FireStoreService.getUser(currentUser!.uid),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
               return const Center(

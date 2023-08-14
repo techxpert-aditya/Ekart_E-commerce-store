@@ -66,7 +66,6 @@ const furniture = "Furniture";
 // item detail screen strings
 
 const seller = "Seller";
-const inHouseProduct = "In House Product";
 const color = "Color :";
 const quantity = "Quantity :";
 const available = "Available";
