@@ -1,7 +1,9 @@
 import 'package:emart/consts/consts.dart';
 
 Widget productDetailsElevatedButtonWidget(
-    {required String text, required Function onPressed, required screenWidth}) {
+    {required String text,
+    required Function()? onPress,
+    required screenWidth}) {
   return SizedBox(
     width: screenWidth * 0.4,
     height: 50,
@@ -10,7 +12,7 @@ Widget productDetailsElevatedButtonWidget(
         backgroundColor: text == "Add to Cart" ? redColor : golden,
         elevation: 0,
       ),
-      onPressed: () {},
+      onPressed: onPress,
       child: text.text.color(whiteColor).fontFamily(bold).size(16).make(),
     ),
   ).box.shadow.make();

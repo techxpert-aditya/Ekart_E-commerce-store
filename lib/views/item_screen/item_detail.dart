@@ -7,7 +7,8 @@ class ItemDetail extends StatelessWidget {
   final String? title;
   final dynamic data;
   ItemDetail({super.key, required this.title, required this.data});
-  final ItemDetailsController controller = Get.put(ItemDetailsController());
+  final ItemDetailsController productController =
+      Get.put(ItemDetailsController());
 
   final currencyFormatter = NumberFormat('#,##,###', 'en_IN');
 
@@ -162,7 +163,8 @@ class ItemDetail extends StatelessWidget {
                                 children: List.generate(
                                   data['p_colors'].length,
                                   (index) => index ==
-                                          controller.currentSelectedColor.value
+                                          productController
+                                              .currentSelectedColor.value
                                       ? VxBox()
                                           .size(40, 40)
                                           .roundedFull
@@ -173,7 +175,7 @@ class ItemDetail extends StatelessWidget {
                                           .shadow
                                           .make()
                                           .onTap(() {
-                                          controller.currentSelectedColor
+                                          productController.currentSelectedColor
                                               .value = index;
                                         })
                                       : VxBox()
@@ -186,7 +188,7 @@ class ItemDetail extends StatelessWidget {
                                           .outerShadow
                                           .make()
                                           .onTap(() {
-                                          controller.currentSelectedColor
+                                          productController.currentSelectedColor
                                               .value = index;
                                         }),
                                 ),
@@ -212,21 +214,22 @@ class ItemDetail extends StatelessWidget {
                                 children: [
                                   IconButton(
                                     onPressed: () {
-                                      controller.decreaseQuantity();
+                                      productController.decreaseQuantity();
                                     },
                                     icon: Icon(
                                       Icons.remove_circle_outline_rounded,
-                                      color:
-                                          controller.currentQuantity.value == 0
-                                              ? lightGrey
-                                              : fontGrey,
+                                      color: productController
+                                                  .currentQuantity.value ==
+                                              0
+                                          ? lightGrey
+                                          : fontGrey,
                                     ),
                                   ),
                                   SizedBox(
                                     width: 40,
                                     child: Align(
                                       alignment: Alignment.center,
-                                      child: controller
+                                      child: productController
                                           .currentQuantity.value.text
                                           .size(20)
                                           .make(),
@@ -234,7 +237,7 @@ class ItemDetail extends StatelessWidget {
                                   ),
                                   IconButton(
                                     onPressed: () {
-                                      controller.increaseQuantity();
+                                      productController.increaseQuantity();
                                     },
                                     icon: const Icon(
                                       Icons.add_circle_outline_rounded,
@@ -276,7 +279,8 @@ class ItemDetail extends StatelessWidget {
                                   .make(),
                               Obx(
                                 () => currencyFormatter
-                                    .format(controller.currentQuantity.value *
+                                    .format(productController
+                                            .currentQuantity.value *
                                         priceValue)
                                     .text
                                     .size(20)
@@ -444,13 +448,36 @@ class ItemDetail extends StatelessWidget {
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             productDetailsElevatedButtonWidget(
-              text: "Add to Cart",
-              onPressed: () {},
+              text: addToCart,
+              onPress: () {
+                try {
+                  if (productController.currentQuantity.value == 0) {
+                    productController.increaseQuantity();
+                  }
+                  print("start");
+                  productController.addToCart(
+                    sellerName: data['p_seller'],
+                    color: data['p_colors']
+                        [productController.currentSelectedColor.value],
+                    context: context,
+                    image: data['p_images'][0],
+                    totalPrice:
+                        productController.currentQuantity.value * priceValue,
+                    quantity: productController.currentQuantity.value,
+                    title: data['p_name'],
+                    vendorId: data['vendor_id'],
+                  );
+                  print('done');
+                  VxToast.show(context, msg: "Successfully added");
+                } catch (e) {
+                  VxToast.show(context, msg: e.toString());
+                }
+              },
               screenWidth: context.width,
             ),
             productDetailsElevatedButtonWidget(
-              text: "Buy Now",
-              onPressed: () {},
+              text: buyNow,
+              onPress: () {},
               screenWidth: context.width,
             ),
           ]),
