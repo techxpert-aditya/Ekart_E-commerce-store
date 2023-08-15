@@ -1,4 +1,5 @@
 import 'package:emart/consts/consts.dart';
+import 'package:emart/controllers/home_controller.dart';
 import 'package:emart/widgets_common/home_tiles.dart';
 
 import 'components/featured_tile.dart';
@@ -13,13 +14,46 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: lightGrey,
-      height: context.screenHeight,
-      width: context.screenWidth,
-      // padding: const EdgeInsets.all(16),
-      child: SafeArea(
-          child: Column(
+    return Scaffold(
+      backgroundColor: lightGrey,
+      appBar: AppBar(
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
+          children: [
+            welcome.text.color(fontGrey).size(16).make(),
+            Obx(
+              () => Get.find<HomeController>()
+                  .userName
+                  .value
+                  .text
+                  .fontFamily(bold)
+                  .size(20)
+                  .color(darkFontGrey)
+                  .make(),
+            ),
+          ],
+        ),
+        actions: [
+          Obx(
+            () => Image.network(
+              Get.find<HomeController>().userImage.value,
+              fit: BoxFit.cover,
+            )
+                .box
+                .clip(Clip.antiAlias)
+                .roundedFull
+                .margin(const EdgeInsets.only(right: 16))
+                .make()
+                .onTap(() {
+              Get.find<HomeController>().currentNavIndex.value = 3;
+            }),
+          ),
+        ],
+      ),
+      body: Column(
         children: [
           // search bar
           Container(
@@ -326,7 +360,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ],
-      )),
+      ),
     );
   }
 }
