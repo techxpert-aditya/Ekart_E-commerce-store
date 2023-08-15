@@ -25,31 +25,50 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             welcome.text.color(fontGrey).size(16).make(),
             Obx(
-              () => Get.find<HomeController>()
-                  .userName
-                  .value
-                  .text
-                  .fontFamily(bold)
-                  .size(20)
-                  .color(darkFontGrey)
-                  .make(),
+              () => (Get.find<HomeController>().userName.value == '')
+                  ? user.text
+                      .fontFamily(bold)
+                      .size(20)
+                      .color(darkFontGrey)
+                      .make()
+                  : Get.find<HomeController>()
+                      .userName
+                      .value
+                      .text
+                      .fontFamily(bold)
+                      .size(20)
+                      .color(darkFontGrey)
+                      .make(),
             ),
           ],
         ),
         actions: [
           Obx(
-            () => Image.network(
-              Get.find<HomeController>().userImage.value,
-              fit: BoxFit.cover,
-            )
-                .box
-                .clip(Clip.antiAlias)
-                .roundedFull
-                .margin(const EdgeInsets.only(right: 16))
-                .make()
-                .onTap(() {
-              Get.find<HomeController>().currentNavIndex.value = 3;
-            }),
+            () => (Get.find<HomeController>().userImage.value == '')
+                ? Image.asset(
+                    icProfile,
+                    fit: BoxFit.cover,
+                  )
+                    .box
+                    .clip(Clip.antiAlias)
+                    .roundedFull
+                    .margin(const EdgeInsets.only(right: 16))
+                    .make()
+                    .onTap(() {
+                    Get.find<HomeController>().currentNavIndex.value = 3;
+                  })
+                : Image.network(
+                    Get.find<HomeController>().userImage.value,
+                    fit: BoxFit.cover,
+                  )
+                    .box
+                    .clip(Clip.antiAlias)
+                    .roundedFull
+                    .margin(const EdgeInsets.only(right: 16))
+                    .make()
+                    .onTap(() {
+                    Get.find<HomeController>().currentNavIndex.value = 3;
+                  }),
           ),
         ],
       ),

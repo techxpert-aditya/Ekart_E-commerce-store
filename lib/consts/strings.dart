@@ -35,6 +35,7 @@ const account = "Account";
 // home screen strings
 
 const welcome = "Welcome, ";
+const user = "User";
 const searchAnything = "Search anything . . .";
 const todaysDeal = "Todays Deal";
 const flashSale = "Flash Sale";
