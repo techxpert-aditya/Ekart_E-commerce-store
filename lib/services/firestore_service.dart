@@ -17,4 +17,8 @@ class FireStoreService {
         .where('p_catagory', isEqualTo: catagory)
         .snapshots();
   }
+
+  static getCartItems() {
+    return firestore.collection(cartCollection).snapshots();
+  }
 }

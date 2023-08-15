@@ -80,6 +80,11 @@ const productsYouMayAlsoLike = "Products you may also like";
 const addToCart = "Add to Cart";
 const buyNow = "Buy Now";
 
+// cart screen strings
+const yourCart = "Your Cart";
+const procceedToCheckout = "Procceed to Checkout";
+const cartIsEmpty = "Cart is Empty";
+
 // account screen strings
 const logOut = "Log Out";
 const inYourCart = "In your Cart";
